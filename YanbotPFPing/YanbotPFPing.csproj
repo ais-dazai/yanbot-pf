@@ -28,4 +28,20 @@
     <DalamudLibPath Condition="'$(DALAMUD_HOME)' == ''">$(HOME)/.xlcore/dalamud/Hooks/dev/</DalamudLibPath>
   </PropertyGroup>
 
+  <!-- Only needed for distributing to other players via the custom repo
+       (pluginmaster.json at the repo root) - packages a Release build into
+       a ready-to-download latest.zip. Not used for local dev-plugin
+       testing, which loads straight from bin/x64/Debug. -->
+  <ItemGroup>
+    <PackageReference Include="DalamudPackager" Version="15.0.0" />
+  </ItemGroup>
+
+  <Target Name="PackagePlugin" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <DalamudPackager
+        ProjectDir="$(ProjectDir)"
+        OutputPath="$(OutputPath)"
+        AssemblyName="$(AssemblyName)"
+        MakeZip="true" />
+  </Target>
+
 </Project>
