@@ -6,5 +6,11 @@ internal static class PartyListener
 
     public static void Off() => CrossWorldPartyListSystem.OnPartyFull -= OnPartyFull;
 
-    private static void OnPartyFull() => PartyFullNotifier.NotifyPartyFull();
+    private static void OnPartyFull()
+    {
+        if (!Service.Configuration.Enabled)
+            return;
+
+        PartyFullNotifier.NotifyPartyFull();
+    }
 }

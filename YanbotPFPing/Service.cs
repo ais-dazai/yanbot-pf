@@ -20,4 +20,13 @@ internal class Service
     [PluginService] internal static IFramework Framework { get; private set; } = null!;
     [PluginService] internal static IChatGui ChatGui { get; private set; } = null!;
     [PluginService] internal static IPluginLog PluginLog { get; private set; } = null!;
+
+    /// <summary>
+    /// Not IoC-injected like the properties above - Dalamud doesn't manage
+    /// plugin config objects that way. Set manually in Plugin's constructor
+    /// right after <c>pluginInterface.Create&lt;Service&gt;()</c>, then read
+    /// from here by anything that needs the on/off toggle (e.g.
+    /// PartyListener).
+    /// </summary>
+    internal static Configuration Configuration { get; set; } = null!;
 }

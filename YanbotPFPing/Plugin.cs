@@ -5,9 +5,11 @@ using Dalamud.Plugin.Services;
 namespace YanbotPFPing;
 
 /// <summary>
-/// Zero-configuration companion plugin for Yan-bot.
-/// Install it and it just works: no config window, no webhook URL to
-/// paste in, nothing to type. See README.md for the full design.
+/// Zero-configuration companion plugin for Yan-bot. Install it and it
+/// works out of the box: no config window, no webhook URL to paste in.
+/// The only control is a simple on/off toggle via "/yanbot on"/"/yanbot
+/// off", for players who'd rather enable it only when they're stepping
+/// away. See README.md for the full design.
 /// </summary>
 public sealed class Plugin : IDalamudPlugin
 {
@@ -19,11 +21,12 @@ public sealed class Plugin : IDalamudPlugin
     public Plugin(IDalamudPluginInterface pluginInterface, ICommandManager commandManager)
     {
         pluginInterface.Create<Service>();
+        Service.Configuration = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
 
         CommandManager = commandManager;
         CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
-            HelpMessage = "Shows Yanbot PF Ping's status - there are no settings to configure.",
+            HelpMessage = "Shows Yanbot PF Ping's status, or use \"/yanbot on\"/\"/yanbot off\" to toggle notifications.",
         });
 
         CrossWorldPartyListSystem.Start();
@@ -39,10 +42,28 @@ public sealed class Plugin : IDalamudPlugin
 
     private void OnCommand(string command, string args)
     {
+        switch (args.Trim().ToLowerInvariant())
+        {
+            case "on":
+            case "enable":
+                Service.Configuration.Enabled = true;
+                Service.Configuration.Save();
+                Service.ChatGui.Print(
+                    "[Yanbot PF Ping] Enabled - you'll be pinged when someone else fills your party to 8/8.");
+                return;
+            case "off":
+            case "disable":
+                Service.Configuration.Enabled = false;
+                Service.Configuration.Save();
+                Service.ChatGui.Print(
+                    "[Yanbot PF Ping] Disabled - no notifications until you run \"/yanbot on\" again.");
+                return;
+        }
+
         var isAfk = CharacterUtil.IsClientAfk();
         Service.ChatGui.Print(
-            "[Yanbot PF Ping] Running, no configuration needed. "
-            + $"AFK right now: {(isAfk ? "yes" : "no")} (informational only - "
-            + "notifications fire any time someone else fills your party to 8/8).");
+            $"[Yanbot PF Ping] {(Service.Configuration.Enabled ? "Enabled" : "Disabled")}. "
+            + $"AFK right now: {(isAfk ? "yes" : "no")} (informational only). "
+            + "Use \"/yanbot on\" or \"/yanbot off\" to toggle notifications.");
     }
 }

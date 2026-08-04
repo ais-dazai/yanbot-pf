@@ -7,7 +7,8 @@ a Discord channel - if you've linked your character with `/register`. If
 you haven't registered, the bot has no Discord account to ping, so nothing
 happens.
 
-There is nothing to configure. Install it and it just works.
+There is nothing to configure. Install it and it just works, notifying by
+default. The only control is a simple on/off switch - see below.
 
 ## How it decides when to notify
 
@@ -16,11 +17,27 @@ There is nothing to configure. Install it and it just works.
 - The member who completed it is someone **else**, not you - if you're the
   one who just joined an already-organized party as the final member,
   that's not "your listing filled", so it stays quiet.
+- The plugin is currently enabled (see below) - it fires regardless of
+  your AFK state, but you can turn it off entirely.
 
-Both conditions must be true - it fires regardless of your AFK state. See
-`CrossWorldPartyListSystem.cs` and `PartyListener.cs` for the exact logic.
-(The AFK reading itself is still available via the `/yanbot` status
-command, it just no longer gates notifications.)
+All conditions must be true. See `CrossWorldPartyListSystem.cs` and
+`PartyListener.cs` for the exact logic. (The AFK reading itself is still
+available via the `/yanbot` status command, it just no longer gates
+notifications on its own.)
+
+## Turning it on/off
+
+```
+/yanbot          - shows current status (enabled/disabled, AFK reading)
+/yanbot on       - enables notifications
+/yanbot off      - disables notifications
+```
+
+Useful if you'd rather only notify while you're stepping away: run
+`/yanbot off` while actively playing, `/yanbot on` right before you go
+AFK. The setting is saved through Dalamud's normal plugin config storage,
+so it persists across relogs and game restarts - it defaults to **on**
+for anyone who never touches the command.
 
 ## Credits
 
