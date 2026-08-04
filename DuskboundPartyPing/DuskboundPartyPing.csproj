@@ -5,7 +5,7 @@
     <Company>Duskbound</Company>
     <Version>1.0.0.0</Version>
     <Description>Pings you in Discord when your Party Finder listing fills up, while you're AFK.</Description>
-    <PackageProjectUrl>https://github.com/ais-dazai/duskbound-partyping</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/ais-dazai/yanbot-pf</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup>
