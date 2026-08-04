@@ -2,7 +2,7 @@
 
 Zero-configuration Dalamud plugin. While you're AFK, if your Party Finder
 group fills up to 8/8 because someone else joined, it tells the
-[Duskbound Discord bot](https://github.com/ais-dazai/ffxiv-duskbound-bot),
+[Duskbound Discord bot](https://github.com/ais-dazai/yanbot-discord),
 which pings you in a Discord channel - if you've linked your character with
 `/register`. If you haven't registered, the bot has no Discord account to
 ping, so nothing happens.
