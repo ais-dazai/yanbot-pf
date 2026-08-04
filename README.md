@@ -28,15 +28,16 @@ notifications on its own.)
 ## Turning it on/off
 
 ```
-/yanbot          - shows current status (enabled/disabled, AFK reading)
-/yanbot on       - enables notifications
-/yanbot off      - disables notifications
+/yanbot          - toggles notifications on/off and reports the new status
 ```
 
-Useful if you'd rather only notify while you're stepping away: run
-`/yanbot off` while actively playing, `/yanbot on` right before you go
-AFK. The setting is saved through Dalamud's normal plugin config storage,
-so it persists across relogs and game restarts - it defaults to **on**
+Every run flips the switch - run it once to see it go from enabled to
+disabled, run it again to flip back. No arguments needed. Useful if
+you'd rather only notify while you're stepping away: run `/yanbot` to
+turn it off while actively playing, run it again right before you go AFK
+to turn it back on. The setting is saved through Dalamud's normal plugin
+config storage, so it persists across relogs and game restarts - it
+defaults to **on**
 for anyone who never touches the command.
 
 ## Credits
