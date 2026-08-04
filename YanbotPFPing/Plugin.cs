@@ -45,10 +45,7 @@ public sealed class Plugin : IDalamudPlugin
         Service.Configuration.Enabled = !Service.Configuration.Enabled;
         Service.Configuration.Save();
 
-        var isAfk = CharacterUtil.IsClientAfk();
         var status = Service.Configuration.Enabled ? "Enabled" : "Disabled";
-        Service.ChatGui.Print(
-            $"[Yanbot PF Ping] {status}. AFK right now: {(isAfk ? "yes" : "no")} (informational only). "
-            + "Run \"/yanbot\" again to toggle.");
+        Service.ChatGui.Print($"[Yanbot PF Ping] {status}. Run \"/yanbot\" again to toggle.");
     }
 }

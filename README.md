@@ -17,13 +17,11 @@ default. The only control is a simple on/off switch - see below.
 - The member who completed it is someone **else**, not you - if you're the
   one who just joined an already-organized party as the final member,
   that's not "your listing filled", so it stays quiet.
-- The plugin is currently enabled (see below) - it fires regardless of
-  your AFK state, but you can turn it off entirely.
+- The plugin is currently enabled (see below) - notifications fire
+  regardless of AFK state, but you can turn them off entirely.
 
 All conditions must be true. See `CrossWorldPartyListSystem.cs` and
-`PartyListener.cs` for the exact logic. (The AFK reading itself is still
-available via the `/yanbot` status command, it just no longer gates
-notifications on its own.)
+`PartyListener.cs` for the exact logic.
 
 ## Turning it on/off
 
@@ -46,8 +44,7 @@ Built with reference to two real, working Dalamud plugins (their source
 was read directly to get the API calls right):
 
 - [PushyFinder](https://github.com/snightshade/PushyFinder) - the
-  cross-world party polling/diffing approach and the AFK check
-  (`OnlineStatus.RowId is 17 or 18`) are adapted from its actual
+  cross-world party polling/diffing approach is adapted from its actual
   production code.
 - [FFLogsViewer](https://github.com/Aireil/FFLogsViewer) - the
   `InfoProxyCrossRealm` struct access pattern (`CrossRealmGroups`,
@@ -75,12 +72,14 @@ initialized at least once (just launch the game through XIVLauncher once).
    "Enable dev plugin locations" first), and add the build output folder
    (`YanbotPFPing/bin/x64/Debug` or `/Release`) as a dev plugin
    location. Enable the plugin from there.
-5. Run `/yanbot` in chat to confirm it loaded and check your live AFK
-   status reading (informational only - see above).
-6. To test the actual notification: have someone else join your Party
-   Finder group until it's full (8/8). Check the configured Discord
-   channel for the ping, and check the plugin log (`/xllog`) for any
-   `PartyFullNotifier` errors if nothing shows up.
+5. Run `/yanbot` in chat to confirm it loaded - it toggles notifications
+   and reports the resulting status, so you'll see "Enabled" or
+   "Disabled" printed back.
+6. To test the actual notification: make sure it's enabled (see step 5),
+   then have someone else join your Party Finder group until it's full
+   (8/8). Check the configured Discord channel for the ping, and check
+   the plugin log (`/xllog`) for any `PartyFullNotifier` errors if nothing
+   shows up.
 
 Once this is confirmed working, the next step is distributing it to the
 rest of the guild via a custom Dalamud plugin repository (a `repo.json` +
