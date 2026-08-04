@@ -5,14 +5,14 @@ using Dalamud.Plugin.Services;
 namespace YanbotPFPing;
 
 /// <summary>
-/// Zero-configuration companion plugin for the Duskbound Discord bot.
+/// Zero-configuration companion plugin for Yan-bot.
 /// Install it and it just works: no config window, no webhook URL to
 /// paste in, nothing to type. See README.md for the full design.
 /// </summary>
 public sealed class Plugin : IDalamudPlugin
 {
     public string Name => "Yanbot PF Ping";
-    private const string CommandName = "/yanbotpfping";
+    private const string CommandName = "/yanbot";
 
     private ICommandManager CommandManager { get; init; }
 
@@ -42,7 +42,7 @@ public sealed class Plugin : IDalamudPlugin
         var isAfk = CharacterUtil.IsClientAfk();
         Service.ChatGui.Print(
             "[Yanbot PF Ping] Running, no configuration needed. "
-            + $"AFK right now: {(isAfk ? "yes" : "no")} "
-            + "(notifications only fire while AFK, when someone else fills your party to 8/8).");
+            + $"AFK right now: {(isAfk ? "yes" : "no")} (informational only - "
+            + "notifications fire any time someone else fills your party to 8/8).");
     }
 }

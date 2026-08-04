@@ -6,11 +6,5 @@ internal static class PartyListener
 
     public static void Off() => CrossWorldPartyListSystem.OnPartyFull -= OnPartyFull;
 
-    private static void OnPartyFull()
-    {
-        if (!CharacterUtil.IsClientAfk())
-            return;
-
-        PartyFullNotifier.NotifyPartyFull();
-    }
+    private static void OnPartyFull() => PartyFullNotifier.NotifyPartyFull();
 }

@@ -1,11 +1,11 @@
 # Yanbot PF Ping
 
-Zero-configuration Dalamud plugin. While you're AFK, if your Party Finder
-group fills up to 8/8 because someone else joined, it tells the
-[Duskbound Discord bot](https://github.com/ais-dazai/yanbot-discord),
-which pings you in a Discord channel - if you've linked your character with
-`/register`. If you haven't registered, the bot has no Discord account to
-ping, so nothing happens.
+Zero-configuration Dalamud plugin. If your Party Finder group fills up to
+8/8 because someone else joined, it tells
+[Yan-bot](https://github.com/ais-dazai/yanbot-discord), which pings you in
+a Discord channel - if you've linked your character with `/register`. If
+you haven't registered, the bot has no Discord account to ping, so nothing
+happens.
 
 There is nothing to configure. Install it and it just works.
 
@@ -16,18 +16,16 @@ There is nothing to configure. Install it and it just works.
 - The member who completed it is someone **else**, not you - if you're the
   one who just joined an already-organized party as the final member,
   that's not "your listing filled", so it stays quiet.
-- You are currently AFK (same "Zzz" status the game itself shows).
 
-All three conditions must be true. See `CrossWorldPartyListSystem.cs` and
-`PartyListener.cs` for the exact logic.
+Both conditions must be true - it fires regardless of your AFK state. See
+`CrossWorldPartyListSystem.cs` and `PartyListener.cs` for the exact logic.
+(The AFK reading itself is still available via the `/yanbot` status
+command, it just no longer gates notifications.)
 
-## ⚠️ Important: this hasn't been compiled or tested in-game yet
+## Credits
 
-This plugin was written by an AI assistant working from a Linux sandbox
-with no access to Windows, Visual Studio, or a real Dalamud installation -
-so none of this code has actually been built or run. It's grounded in two
-real, working, current Dalamud plugins (their source was read directly to
-get the API calls right):
+Built with reference to two real, working Dalamud plugins (their source
+was read directly to get the API calls right):
 
 - [PushyFinder](https://github.com/snightshade/PushyFinder) - the
   cross-world party polling/diffing approach and the AFK check
@@ -39,10 +37,7 @@ get the API calls right):
   player's own name/world via `IPlayerState` are adapted from its actual
   production code.
 
-Still, Dalamud's API surface shifts between game patches, and this needs a
-real build to catch anything that doesn't compile. **The first thing to do
-is build it and fix whatever the compiler complains about** - expect that
-to be a real possibility, not a sign something went wrong with the plan.
+Confirmed building and working in-game as of the first real test build.
 
 ## Building and testing it yourself (no Discord/guild distribution needed yet)
 
@@ -62,10 +57,10 @@ initialized at least once (just launch the game through XIVLauncher once).
    "Enable dev plugin locations" first), and add the build output folder
    (`YanbotPFPing/bin/x64/Debug` or `/Release`) as a dev plugin
    location. Enable the plugin from there.
-5. Run `/yanbotpfping` in chat to confirm it loaded and check your
-   live AFK status reading.
-6. To test the actual notification: go AFK, and have someone else join
-   your Party Finder group until it's full. Check the configured Discord
+5. Run `/yanbot` in chat to confirm it loaded and check your live AFK
+   status reading (informational only - see above).
+6. To test the actual notification: have someone else join your Party
+   Finder group until it's full (8/8). Check the configured Discord
    channel for the ping, and check the plugin log (`/xllog`) for any
    `PartyFullNotifier` errors if nothing shows up.
 

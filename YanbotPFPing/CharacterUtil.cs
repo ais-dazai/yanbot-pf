@@ -8,8 +8,10 @@ internal static class CharacterUtil
     /// "Zzz" icon), so there's no need to track idle time ourselves.
     /// 17 = AFK, 18 = Camera Mode/gpose (also effectively idle).
     /// Square Enix has occasionally renumbered online statuses across
-    /// patches before - if this stops matching, use "/duskboundpartyping"
-    /// in-game to check the live AFK reading while testing.
+    /// patches before - if this stops matching, use "/yanbot" in-game to
+    /// check the live AFK reading while testing. Not currently used to
+    /// gate notifications (those fire regardless of AFK state), kept only
+    /// for the informational status shown by the "/yanbot" command.
     /// </summary>
     public static bool IsClientAfk()
     {

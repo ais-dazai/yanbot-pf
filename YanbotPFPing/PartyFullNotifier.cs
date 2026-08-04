@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace YanbotPFPing;
 
 /// <summary>
-/// Tells the Duskbound Discord bot's party-finder API (see this project's
-/// sibling repo, ffxiv-duskbound-bot/party_api.py) that the local player's
-/// party just filled up. The bot does the rest: it looks up who registered
-/// this character via /register and pings them - this plugin never talks
-/// to Discord directly, and doesn't know or care who owns the account.
+/// Tells Yan-bot's party-finder API (see this project's sibling repo,
+/// yanbot-discord/party_api.py) that the local player's party just filled
+/// up. The bot does the rest: it looks up who registered this character
+/// via /register and pings them - this plugin never talks to Discord
+/// directly, and doesn't know or care who owns the account.
 /// </summary>
 internal static class PartyFullNotifier
 {
