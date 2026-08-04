@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+  <PropertyGroup>
+    <Authors>Duskbound</Authors>
+    <Company>Duskbound</Company>
+    <Version>1.0.0.0</Version>
+    <Description>Pings you in Discord when your Party Finder listing fills up, while you're AFK.</Description>
+    <PackageProjectUrl>https://github.com/ais-dazai/duskbound-partyping</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
+    <Platforms>x64</Platforms>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+
+  <!-- Lets `dotnet build` work from a Linux dev machine/CI runner too, as
+       long as DALAMUD_HOME (or the default XIVLauncher path) points at a
+       Dalamud install - same trick PushyFinder uses. Not required on
+       Windows, where the SDK finds it automatically. -->
+  <PropertyGroup Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'">
+    <DalamudLibPath>$(DALAMUD_HOME)/</DalamudLibPath>
+    <DalamudLibPath Condition="'$(DALAMUD_HOME)' == ''">$(HOME)/.xlcore/dalamud/Hooks/dev/</DalamudLibPath>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+{
+  "Author": "Duskbound",
+  "Name": "Duskbound Party Ping",
+  "Punchline": "Pings you in Discord when your Party Finder listing fills up.",
+  "Description": "Zero-configuration companion plugin for the Duskbound Discord bot. While you're AFK, if your cross-world party fills to 8/8 because someone else joined, it tells the bot - which pings you in a Discord channel if you've linked your character with /register. Nothing to set up: just install it.",
+  "InternalName": "DuskboundPartyPing",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "party-finder",
+    "afk",
+    "notifications",
+    "discord"
+  ]
+}
