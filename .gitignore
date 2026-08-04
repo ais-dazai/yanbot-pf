@@ -5,4 +5,4 @@ obj/
 
 # Never commit the real secret - copy Secrets.cs.example to Secrets.cs
 # and fill in the real values locally.
-DuskboundPartyPing/Secrets.cs
+YanbotPFPing/Secrets.cs

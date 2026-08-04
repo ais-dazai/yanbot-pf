@@ -1,4 +1,4 @@
-# Duskbound Party Ping
+# Yanbot PF Ping
 
 Zero-configuration Dalamud plugin. While you're AFK, if your Party Finder
 group fills up to 8/8 because someone else joined, it tells the
@@ -50,19 +50,19 @@ You need [XIVLauncher](https://goatcorp.github.io/) installed and Dalamud
 initialized at least once (just launch the game through XIVLauncher once).
 
 1. Install the .NET SDK matching the `TargetFramework` in
-   `DuskboundPartyPing/DuskboundPartyPing.csproj` (currently `net10.0`).
-2. Copy `DuskboundPartyPing/Secrets.cs.example` to
-   `DuskboundPartyPing/Secrets.cs` and fill in the real API URL/token (ask
+   `YanbotPFPing/YanbotPFPing.csproj` (currently `net10.0`).
+2. Copy `YanbotPFPing/Secrets.cs.example` to
+   `YanbotPFPing/Secrets.cs` and fill in the real API URL/token (ask
    whoever manages the bot's Railway deployment for these - `Secrets.cs`
    is gitignored, never commit it).
-3. Open `DuskboundPartyPing.sln` in Visual Studio (or run
+3. Open `YanbotPFPing.sln` in Visual Studio (or run
    `dotnet build` from this folder) and build.
 4. In-game, open the Dalamud Plugin Installer (`/xlplugins`), go to the
    "Dev Tools" tab (may need "Settings" -> "Experimental" ->
    "Enable dev plugin locations" first), and add the build output folder
-   (`DuskboundPartyPing/bin/x64/Debug` or `/Release`) as a dev plugin
+   (`YanbotPFPing/bin/x64/Debug` or `/Release`) as a dev plugin
    location. Enable the plugin from there.
-5. Run `/duskboundpartyping` in chat to confirm it loaded and check your
+5. Run `/yanbotpfping` in chat to confirm it loaded and check your
    live AFK status reading.
 6. To test the actual notification: go AFK, and have someone else join
    your Party Finder group until it's full. Check the configured Discord

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuskboundPartyPing", "DuskboundPartyPing\DuskboundPartyPing.csproj", "{9C9F4BF9-5E9A-4F02-B85F-E77155F941BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YanbotPFPing", "YanbotPFPing\YanbotPFPing.csproj", "{9C9F4BF9-5E9A-4F02-B85F-E77155F941BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

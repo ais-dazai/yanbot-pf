@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace DuskboundPartyPing;
+namespace YanbotPFPing;
 
 /// <summary>
 /// Tells the Duskbound Discord bot's party-finder API (see this project's

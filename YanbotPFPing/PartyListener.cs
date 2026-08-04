@@ -1,4 +1,4 @@
-namespace DuskboundPartyPing;
+namespace YanbotPFPing;
 
 internal static class PartyListener
 {

@@ -3,7 +3,7 @@ using System.Linq;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
 
-namespace DuskboundPartyPing;
+namespace YanbotPFPing;
 
 /// <summary>
 /// Polls the game's cross-world party info once a frame (the same

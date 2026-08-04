@@ -2,7 +2,7 @@ using Dalamud.Game.Command;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 
-namespace DuskboundPartyPing;
+namespace YanbotPFPing;
 
 /// <summary>
 /// Zero-configuration companion plugin for the Duskbound Discord bot.
@@ -11,8 +11,8 @@ namespace DuskboundPartyPing;
 /// </summary>
 public sealed class Plugin : IDalamudPlugin
 {
-    public string Name => "Duskbound Party Ping";
-    private const string CommandName = "/duskboundpartyping";
+    public string Name => "Yanbot PF Ping";
+    private const string CommandName = "/yanbotpfping";
 
     private ICommandManager CommandManager { get; init; }
 
@@ -23,7 +23,7 @@ public sealed class Plugin : IDalamudPlugin
         CommandManager = commandManager;
         CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
-            HelpMessage = "Shows Duskbound Party Ping's status - there are no settings to configure.",
+            HelpMessage = "Shows Yanbot PF Ping's status - there are no settings to configure.",
         });
 
         CrossWorldPartyListSystem.Start();
@@ -41,7 +41,7 @@ public sealed class Plugin : IDalamudPlugin
     {
         var isAfk = CharacterUtil.IsClientAfk();
         Service.ChatGui.Print(
-            "[Duskbound Party Ping] Running, no configuration needed. "
+            "[Yanbot PF Ping] Running, no configuration needed. "
             + $"AFK right now: {(isAfk ? "yes" : "no")} "
             + "(notifications only fire while AFK, when someone else fills your party to 8/8).");
     }
